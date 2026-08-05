@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: backend
+
+neo4j:
+  uri: "bolt+s://db-df469dc5.databases.cognodb.com"
+  username: "cognodb"
+  password: "8cc8a6a8527c6fdd7f0b810d6c9431cc"
+
+logging:
+  level:
+    root: INFO
+    com.moviegraph.backend: DEBUG
