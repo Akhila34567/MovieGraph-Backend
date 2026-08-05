@@ -181,22 +181,20 @@ public boolean delete(String personId) {
     try (Session session = driver.session()) {
 
         String cypher = """
-                MATCH (p:Person {personId: $personId})
-                OPTIONAL MATCH (p)-[r]-()
-                DELETE r, p
-                RETURN COUNT(p) AS deleted
-                """;
+            MATCH (p:Person {personId: $personId})
+            OPTIONAL MATCH (p)-[r]-()
+            WITH p, collect(r) AS rels
+            FOREACH (rel IN rels | DELETE rel)
+            DELETE p
+            RETURN true AS deleted
+            """;
 
         Result result = session.run(
                 cypher,
                 Values.parameters("personId", personId)
         );
 
-        if (!result.hasNext()) {
-            return false;
-        }
-
-        return result.single().get("deleted").asInt() > 0;
+        return result.hasNext() && result.single().get("deleted").asBoolean();
     }
 }
 }
