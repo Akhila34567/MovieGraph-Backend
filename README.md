@@ -343,7 +343,7 @@ http://localhost:8081/swagger-ui/index.html
 ![Swagger Relationships](screenshots/swagger-ui.png4.png)
 # 🎥 Demo Video
 
-Add your Google Drive or YouTube Unlisted video link here.
+https://www.loom.com/share/501688ee609643588983568683e718dd
 
 ---
 
