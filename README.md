@@ -294,18 +294,53 @@ http://localhost:8081/swagger-ui/index.html
 
 # 📸 Application Screenshots
 
-Add screenshots for:
+# 📸 Application Screenshots
 
-- Dashboard
-- Movies
-- Persons
-- Genres
-- Relationships
-- Recommendations
-- Swagger UI
+## 🏠 Graph Database Visualization
+
+![Graph Database](screenshots/graph.png1.png)
 
 ---
 
+## 🌐 Graph Relationships
+
+![Graph Relationships](screenshots/graph.png2.png)
+
+---
+
+## 🎬 Movies API
+
+![Movies API](screenshots/movies-api.png.png)
+
+---
+
+## ⭐ Recommendations API
+
+![Recommendations API](screenshots/recommendations-api.png.png)
+
+---
+
+## 📖 Swagger UI - Movies
+
+![Swagger Movies](screenshots/swagger-ui.png1.png)
+
+---
+
+## 📖 Swagger UI - Persons
+
+![Swagger Persons](screenshots/swagger-ui.png2.png)
+
+---
+
+## 📖 Swagger UI - Genres
+
+![Swagger Genres](screenshots/swagger-ui.png3.png)
+
+---
+
+## 📖 Swagger UI - Relationships
+
+![Swagger Relationships](screenshots/swagger-ui.png4.png)
 # 🎥 Demo Video
 
 Add your Google Drive or YouTube Unlisted video link here.
