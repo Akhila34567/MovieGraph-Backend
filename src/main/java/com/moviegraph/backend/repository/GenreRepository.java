@@ -147,24 +147,22 @@ public class GenreRepository {
     }
 
     // Delete Genre
-    public boolean delete(String genreId) {
+public boolean delete(String genreId) {
 
-        try (Session session = driver.session()) {
+    try (Session session = driver.session()) {
 
-            String cypher = """
-                    MATCH (g:Genre {genreId:$genreId})
-                    WITH g
-                    LIMIT 1
-                    DELETE g
-                    RETURN 1 AS deleted
-                    """;
+        String cypher = """
+                MATCH (g:Genre {genreId:$genreId})
+                DETACH DELETE g
+                RETURN true AS deleted
+                """;
 
-            Result result = session.run(
-                    cypher,
-                    Values.parameters("genreId", genreId)
-            );
+        Result result = session.run(
+                cypher,
+                Values.parameters("genreId", genreId)
+        );
 
-            return result.hasNext();
-        }
+        return result.hasNext();
     }
+}
 }
