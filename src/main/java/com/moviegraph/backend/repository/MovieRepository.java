@@ -176,24 +176,22 @@ public class MovieRepository {
     }
 
     // Delete Movie
-    public boolean delete(String movieId) {
+public boolean delete(String movieId) {
 
-        try (Session session = driver.session()) {
+    try (Session session = driver.session()) {
 
-            String cypher = """
-                    MATCH (m:Movie {movieId: $movieId})
-                    WITH m
-                    LIMIT 1
-                    DELETE m
-                    RETURN 1 AS deleted
-                    """;
+        String cypher = """
+                MATCH (m:Movie {movieId: $movieId})
+                DETACH DELETE m
+                RETURN true AS deleted
+                """;
 
-            Result result = session.run(
-                    cypher,
-                    Values.parameters("movieId", movieId)
-            );
+        Result result = session.run(
+                cypher,
+                Values.parameters("movieId", movieId)
+        );
 
-            return result.hasNext();
-        }
+        return result.hasNext();
     }
+}
 }

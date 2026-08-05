@@ -175,26 +175,23 @@ public class PersonRepository {
         }
     }
 
-   // Delete Person
+  // Delete Person
 public boolean delete(String personId) {
 
     try (Session session = driver.session()) {
 
         String cypher = """
-            MATCH (p:Person {personId: $personId})
-            OPTIONAL MATCH (p)-[r]-()
-            WITH p, collect(r) AS rels
-            FOREACH (rel IN rels | DELETE rel)
-            DELETE p
-            RETURN true AS deleted
-            """;
+                MATCH (p:Person {personId: $personId})
+                DETACH DELETE p
+                RETURN true AS deleted
+                """;
 
         Result result = session.run(
                 cypher,
                 Values.parameters("personId", personId)
         );
 
-        return result.hasNext() && result.single().get("deleted").asBoolean();
+        return result.hasNext();
     }
 }
 }
